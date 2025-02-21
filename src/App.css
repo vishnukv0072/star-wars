@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+.film img {
+  width: 150px;
+}
+
+.film {
+  /*padding: 20px 0;*/
+  cursor: pointer;
+  border-bottom: 1px solid;
+}
+
+.film:hover {
+  background: #cacaca;
+}
