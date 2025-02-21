@@ -37,6 +37,8 @@
   }
 }
 
+/* ############################ */
+
 .film img {
   width: 150px;
 }
@@ -48,5 +50,7 @@
 }
 
 .film:hover {
-  background: #cacaca;
+  /* background: #cacaca; */
 }
+
+/* ############################# */
