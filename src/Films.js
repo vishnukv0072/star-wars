@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import Film from "./Film";
 import Button from "./Button";
 import { default as React } from "react";
+import Loading from "./Loading";
 
 export default function Films({ onCastClick }) {
   const [films, setFilms] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(function () {
     const abortController = new AbortController();
@@ -21,6 +23,7 @@ export default function Films({ onCastClick }) {
           .sort((a, b) => a.episode_id - b.episode_id);
         setFilms(sorted);
         console.log(sorted);
+        setIsLoading(false);
       } catch (err) {
         if (err.name !== "AbortError") {
           console.log(err.message);
@@ -34,12 +37,14 @@ export default function Films({ onCastClick }) {
     };
   }, []);
 
-  return (
+  return isLoading ? (
+    <Loading />
+  ) : (
     <div className="col-12" onClick={() => {}}>
       {films.map((film) => (
         <React.Fragment key={film.episode_id}>
           <Film film={film}>
-            <Button onClick={onCastClick} data={film.characters}>
+            <Button onClick={onCastClick} data={film}>
               Cast
             </Button>
           </Film>
@@ -48,5 +53,3 @@ export default function Films({ onCastClick }) {
     </div>
   );
 }
-
-// https://i.pravatar.cc/48?u=${id}

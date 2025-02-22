@@ -6,7 +6,7 @@ function Film({ film, children }) {
   return (
     <div className="d-flex align-items-center film">
       <img src={`/images/star-wars-${film.episode_id}.jpg`} alt={film.title} />
-      <div>
+      <div className="film-description">
         <h3>{film.title}</h3>
         <p>
           {expandText

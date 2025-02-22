@@ -49,8 +49,31 @@
   border-bottom: 1px solid;
 }
 
-.film:hover {
-  /* background: #cacaca; */
+.film-description {
+  padding: 0 40px;
+}
+
+.header {
+  height: 70px;
+  background-image: url("/public/images/star-background.jpg");
+}
+
+.header img {
+  width: 130px;
+}
+
+.footer {
+  height: 50px;
+  background-image: url("/public/images/star-background.jpg");
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  font-weight: bold;
+  height: calc(100vh - 70px - 50px);
 }
 
 /* ############################# */
