@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import Film from "./Film";
 import Button from "./Button";
-import { default as React } from "react";
+import {default as React} from "react";
 import Loading from "./Loading";
 
-export default function Films({ onCastClick }) {
-  const [films, setFilms] = useState([]);
+export default function Films({onCastClick, onSetFilms, films}) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(function () {
@@ -21,8 +20,7 @@ export default function Films({ onCastClick }) {
         const sorted = data.results
           .slice()
           .sort((a, b) => a.episode_id - b.episode_id);
-        setFilms(sorted);
-        console.log(sorted);
+        onSetFilms(sorted);
         setIsLoading(false);
       } catch (err) {
         if (err.name !== "AbortError") {
@@ -38,14 +36,15 @@ export default function Films({ onCastClick }) {
   }, []);
 
   return isLoading ? (
-    <Loading />
+    <Loading/>
   ) : (
-    <div className="col-12" onClick={() => {}}>
+    <div className="col-12" onClick={() => {
+    }}>
       {films.map((film) => (
         <React.Fragment key={film.episode_id}>
           <Film film={film}>
             <Button onClick={onCastClick} data={film}>
-              Cast
+              Details
             </Button>
           </Film>
         </React.Fragment>

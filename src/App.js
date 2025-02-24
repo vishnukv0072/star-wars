@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useState} from "react";
 import "./App.css";
 import Films from "./Films";
 import Casts from "./Casts";
@@ -7,27 +7,34 @@ import Footer from "./Footer";
 
 function App() {
   const [castClicked, setCastClicked] = useState(null);
+  const [films, setFilms] = useState([]);
+  const [selectedFilm, setSelectedFilm] = useState();
   const isCastClicked = castClicked?.length > 0;
 
-  function handleCastClick(film) {
+  function handleCastClick(e, film) {
     setCastClicked(film?.characters);
+    setSelectedFilm(film?.title);
+  }
+
+  function handleSetFilms(filmData) {
+    setFilms(filmData);
   }
 
   return (
     <>
-      <Header />
+      <Header/>
       <div>
         <div className="container">
           <div className="col-12">
             {isCastClicked ? (
-              <Casts casts={castClicked} onBackClcik={handleCastClick} />
+              <Casts casts={castClicked} onBackClick={handleCastClick} films={films} selectedFilm={selectedFilm}/>
             ) : (
-              <Films onCastClick={handleCastClick} />
+              <Films onCastClick={handleCastClick} onSetFilms={handleSetFilms} films={films}/>
             )}
           </div>
         </div>
       </div>
-      <Footer />
+      <Footer/>
     </>
   );
 }

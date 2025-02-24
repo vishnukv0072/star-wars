@@ -1,11 +1,11 @@
-import { useState } from "react";
+import {useState} from "react";
 
-function Film({ film, children }) {
+function Film({film, children}) {
   const [expandText, setExpandText] = useState(false);
 
   return (
     <div className="d-flex align-items-center film">
-      <img src={`/images/star-wars-${film.episode_id}.jpg`} alt={film.title} />
+      <img src={`/images/star-wars-${film.episode_id}.jpg`} alt={film.title}/>
       <div className="film-description">
         <h3>{film.title}</h3>
         <p>
